@@ -21,13 +21,15 @@ public class SelectUserFragment extends Fragment {
     //Definimos esse atributo que terá como função receber meu listener no onAttach
     OnSelectUserListener onSelectUserListener;
 
-    //Definimos que vai "executar" o listener
+    //Definimos quem vai "executar" o listener
     Button button1, button2, button3;
 
     public SelectUserFragment() {
         // Required empty public constructor
     }
 
+
+    //Método factory para seguir um padrão de projetos.
     public static SelectUserFragment newInstance() {
         SelectUserFragment selectUserFragment = new SelectUserFragment();
         //Caso houver parâmetros deverão ser colocados dentro de um objeto Bundle
@@ -36,15 +38,17 @@ public class SelectUserFragment extends Fragment {
     }
 
 
-    //Definir interface para o listener
+    //Definir interface para o listener, que será implementado na main
     public interface OnSelectUserListener {
         public void onUserSelected(int id);
     }
 
+    //Verifico se o listener recebido pelo método onAttach é válido
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if(context instanceof OnSelectUserListener) {
+            //faço o casting da variavel
             onSelectUserListener = (OnSelectUserListener)context;
         } else {
             throw new ClassCastException("Zebra! Contexto não implementa a interface OnSelectUserListener");
