@@ -16,7 +16,13 @@ import android.widget.Button;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SelectUserFragment extends Fragment {
+/*
+* Quando estamos mexendo com fragments não conseguimos referenciar diretamente no componente o onClick
+* então temos vários métodos de implementação, um dos utilizados é implementar a interface View.OnClickListener
+* gerar o método necessário e utiliza-lo.
+* Quando for necessário basta somente adicionar .setOnClickListener(this) ao componente que irá entender.
+* */
+public class SelectUserFragment extends Fragment implements View.OnClickListener{
 
     //Definimos esse atributo que terá como função receber meu listener no onAttach
     OnSelectUserListener onSelectUserListener;
@@ -36,7 +42,6 @@ public class SelectUserFragment extends Fragment {
         //e passado através do método fragment.setArguments(Bundle)
         return selectUserFragment;
     }
-
 
     //Definir interface para o listener, que será implementado na main
     public interface OnSelectUserListener {
@@ -68,30 +73,17 @@ public class SelectUserFragment extends Fragment {
         button2 = v.findViewById(R.id.button2);
         button3 = v.findViewById(R.id.button3);
 
-        //@todo melhorar para um click listener
-        button1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                onSelectUserListener.onUserSelected(1);
-            }
-        });
+        button1.setOnClickListener(this);
 
-        button2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                onSelectUserListener.onUserSelected(21);
-            }
-        });
+        button2.setOnClickListener(this);
 
-        button3.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                onSelectUserListener.onUserSelected(3);
-            }
-        });
+        button3.setOnClickListener(this);
 
         return v;
     }
 
-   /*public void selectUserOnClick(View view) {
-        Log.d("SelectUserFragment", "Aqui chegou");
+    @Override
+    public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button1:
                 onSelectUserListener.onUserSelected(1);
@@ -103,5 +95,5 @@ public class SelectUserFragment extends Fragment {
                 onSelectUserListener.onUserSelected(3);
                 break;
         }
-    }*/
+    }
 }

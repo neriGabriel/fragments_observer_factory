@@ -1,6 +1,8 @@
 package com.example.showusersonfragment;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private int id;
     private String nome;
     private String apelido;

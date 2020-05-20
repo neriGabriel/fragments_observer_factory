@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserDetailFragment">
+    tools:context=".UserDetailFragment"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/textView_user_id"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:textSize="42sp"
+        android:layout_weight="1"
+        tools:text="id"
+        android:gravity="center"
+        android:layout_margin="8dp"
+        />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/textView_user_nome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="42sp"
+        android:layout_weight="1"
+        tools:text="@tools:sample/first_names"
+        android:gravity="center"
+        android:layout_margin="8dp"
+        />
+
+    <TextView
+        android:id="@+id/textView_user_apelido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="42sp"
+        android:layout_weight="1"
+        tools:text="@tools:sample/last_names"
+        android:gravity="center"
+        android:layout_margin="8dp"
+        />
+</LinearLayout>
